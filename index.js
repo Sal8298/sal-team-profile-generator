@@ -227,9 +227,26 @@ function addIntern() {
         })
 }
 
+
+
 const generateHtml =  employees => {
     const teamHtml = []
+    const htmlHead = `<!DOCTYPE html>                                             
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Team</title>
+        <link rel="stylesheet" href="./styles.css"> 
+    </head>
+    <body>
+            <div>
+                <h1>The Team</h1>
+            </div>
+            <div class="body">`;
     // console.log(employees)
+    teamHtml.push(htmlHead)
     const managers =  employees.filter(employee => employee.constructor.name === 'Manager')
     const engineers =  employees.filter(employee => employee.constructor.name === 'Engineer')
     const interns =  employees.filter(employee => employee.constructor.name === 'Intern')
@@ -251,8 +268,14 @@ const generateHtml =  employees => {
             teamHtml.push( generateIntern(interns[index]))
         }
     }
+    const htmlFoot = `
+    </div>
+    </body>
+    </html>`
+    teamHtml.push(htmlFoot);
     // console.log(teamHtml.join(''));
     return teamHtml.join('');
+
 }
 
 const writeFile =  employees => {
