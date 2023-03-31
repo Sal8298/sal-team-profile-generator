@@ -34,10 +34,6 @@ function initialPrompts() {
             }
             if (answer.selectEmployeeType === 'Done') {
                 writeFile(allEmployees);
-                // console.log(allEmployees);
-
-                // const employee = allEmployees[0];
-                // console.log((employee.constructor.name));
             }
         });
 }
@@ -290,12 +286,10 @@ const generateHtml = employees => {
                 <h1>The Team</h1>
             </div>
             <div class="body">`;
-    // console.log(employees)
     teamHtml.push(htmlHead)
     const managers = employees.filter(employee => employee.constructor.name === 'Manager')
     const engineers = employees.filter(employee => employee.constructor.name === 'Engineer')
     const interns = employees.filter(employee => employee.constructor.name === 'Intern')
-    // console.log(managers)
     for (let index = 0; index < managers.length; index++) {
         if (managers) {
             teamHtml.push(generateManager(managers[index]))
@@ -318,7 +312,6 @@ const generateHtml = employees => {
     </body>
     </html>`
     teamHtml.push(htmlFoot);
-    // console.log(teamHtml.join(''));
     return teamHtml.join('');
 
 }
@@ -330,11 +323,3 @@ const writeFile = employees => {
 };
 
 initialPrompts();
-
-
-
-
-// console.log(typeof (allEmployees[0]));
-
-
-// fs.writeFileSync('./dist/index.html', generateHtml(allEmployees), (err)
