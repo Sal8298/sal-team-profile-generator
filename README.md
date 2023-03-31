@@ -28,7 +28,7 @@
   * Follow the prompts and answer the questions as apopriate.
   * Open the  html file created in the dist folder in browser.
   
-  - Here is a link to a demo:
+  - Here is a link to a demo: https://github.com/Sal8298/sal-team-profile-generator/blob/main/dist/Demo.webm
 
 
   ## Credits
