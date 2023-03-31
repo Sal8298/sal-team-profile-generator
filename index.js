@@ -229,7 +229,7 @@ function addIntern() {
 
 
 
-const generateHtml =  employees => {
+const generateHtml = employees => {
     const teamHtml = []
     const htmlHead = `<!DOCTYPE html>                                             
     <html lang="en">
@@ -238,7 +238,52 @@ const generateHtml =  employees => {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>My Team</title>
-        <link rel="stylesheet" href="./styles.css"> 
+        <style>
+        
+        * {
+        background-color: aliceblue;
+        margin: 0px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    
+    .body {
+        border: 3px solid black;
+        padding: 7px;
+        margin: 50px 150px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+    
+    .card {
+        border: 5px solid black;
+        padding: 10px;
+        background-color: aquamarine;
+        
+    }
+    
+    .card-head {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-size: xx-large;
+        background-color: aquamarine;
+    }
+    
+    .card-main {
+        padding: 2px;
+        background-color: aquamarine;
+    }
+    
+    .body-text {
+        font-size: larger;
+        background-color: aquamarine;
+    }
+    
+    a {
+        background-color: aquamarine;
+    }
+        </style>
     </head>
     <body>
             <div>
@@ -247,25 +292,25 @@ const generateHtml =  employees => {
             <div class="body">`;
     // console.log(employees)
     teamHtml.push(htmlHead)
-    const managers =  employees.filter(employee => employee.constructor.name === 'Manager')
-    const engineers =  employees.filter(employee => employee.constructor.name === 'Engineer')
-    const interns =  employees.filter(employee => employee.constructor.name === 'Intern')
+    const managers = employees.filter(employee => employee.constructor.name === 'Manager')
+    const engineers = employees.filter(employee => employee.constructor.name === 'Engineer')
+    const interns = employees.filter(employee => employee.constructor.name === 'Intern')
     // console.log(managers)
     for (let index = 0; index < managers.length; index++) {
         if (managers) {
-            teamHtml.push( generateManager(managers[index]))
+            teamHtml.push(generateManager(managers[index]))
         }
     }
 
     for (let index = 0; index < engineers.length; index++) {
         if (engineers) {
-            teamHtml.push( generateEngineer(engineers[index]))
+            teamHtml.push(generateEngineer(engineers[index]))
         }
     }
 
     for (let index = 0; index < interns.length; index++) {
         if (interns) {
-            teamHtml.push( generateIntern(interns[index]))
+            teamHtml.push(generateIntern(interns[index]))
         }
     }
     const htmlFoot = `
@@ -278,7 +323,7 @@ const generateHtml =  employees => {
 
 }
 
-const writeFile =  employees => {
+const writeFile = employees => {
     const gen = generateHtml(employees);
     console.log(gen)
     fs.writeFileSync('./dist/index.html', generateHtml(employees), 'utf-8')
